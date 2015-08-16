@@ -132,7 +132,7 @@ class GeneticCards
         foreach ( i, _; *loser )
         {
             // Recombine with the winner
-            if ( uniform01() > RECOMBINATION_RATE )
+            if ( uniform01() < RECOMBINATION_RATE )
             {
                 debug(Breed) writefln("Recombining %d", i);
                 (*loser)[i] = (*winner)[i];
@@ -145,7 +145,7 @@ class GeneticCards
             }
 
             // Mutate
-            if ( uniform01() > MUTATION_RATE )
+            if ( uniform01() < MUTATION_RATE )
             {
                 debug(Breed) writefln("Mutating %d", i);
                 (*loser)[i] = !(*loser)[i];
