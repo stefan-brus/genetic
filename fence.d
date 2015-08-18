@@ -80,7 +80,7 @@ template mutate ( )
     void mutate ( size_t idx )
     in
     {
-        assert(idx >= 0 && idx < this.length);
+        assert(idx < this.length);
     }
     body
     {
