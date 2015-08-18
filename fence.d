@@ -74,12 +74,13 @@ template fitness ( )
 /**
  * The mutator function
  */
+
 template mutate ( )
 {
-    void mutate ( size_t gene )
+    void mutate ( size_t idx )
     in
     {
-        assert(gene >= 0 && gene < this.length);
+        assert(idx >= 0 && idx < this.length);
     }
     body
     {
@@ -89,7 +90,7 @@ template mutate ( )
               X_IDX = 0,
               Y_IDX = 1;
 
-        if ( gene == X_IDX )
+        if ( idx == X_IDX )
         {
             this[X_IDX] = uniform(1, MAX_FENCE_LENGTH);
         }

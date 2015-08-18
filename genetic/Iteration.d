@@ -29,22 +29,55 @@ template IterateN ( uint n )
     }
 }
 
+/**
+ * Iterate until a condition is fulfilled for the current population
+ *
+ * Template params:
+ *      Condition = The condition function
+ *      ConditionArgs = The condition function template arguments
+ *
+ * Params:
+ *      iteration = The iteration delegate
+ */
 
-/*template IterateN ( uint n )
+template IterateUntil ( alias Condition, ConditionArgs ... )
 {
-    template IterateN ( alias Iterate )
+    mixin Condition!(ConditionArgs);
+
+    alias IterateDg = void delegate ( );
+
+    void runIteration ( IterateDg iteration )
     {
-        static assert(is(typeof(generation) == uint),
-            "Iteration requires a local uint called generation");
-
-        void iterate ( )
+        while ( !Condition(this.population) )
         {
-            while ( generation < iterations )
-            {
-                generation++;
+            this.generation++;
 
-                Iterate();
-            }
+            iteration();
         }
     }
-}*/
+}
+
+/**
+ * Condition function for the IterateUntil template.
+ *
+ * Checks if the given population has a perfect creature, one with 0 fitness.
+ *
+ * Template params:
+ *      Creature = The creature type
+ */
+
+template hasPerfect ( Creature )
+{
+    bool Condition ( Creature[] population )
+    {
+        foreach ( creature; population )
+        {
+            if ( creature.fitness() == 0 )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
