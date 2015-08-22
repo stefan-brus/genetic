@@ -108,6 +108,12 @@ template mutate ( )
 alias FenceCreature = Creature!(Gene, GenomeLength, fitness, mutate);
 
 /**
+ * The solver type alias
+ */
+
+alias FenceSolver = Solver!(FenceCreature, IterateN, 100000);
+
+/**
  * Winner function
  */
 
@@ -118,6 +124,6 @@ bool winner ( FenceCreature is_winner, FenceCreature contender )
 
 void main ( )
 {
-    auto solver = new Solver!(FenceCreature, IterateN, 100000)(new FenceConfig(), &winner);
+    auto solver = new FenceSolver(new FenceConfig(), &winner);
     solver.run();
 }

@@ -108,6 +108,12 @@ template mutate ( )
 alias CardCreature = Creature!(Gene, GenomeLength, fitness, mutate);
 
 /**
+ * The solver type alias
+ */
+
+alias CardSolver = Solver!(CardCreature, IterateUntil, hasPerfect, CardCreature);
+
+/**
  * Winner function
  */
 
@@ -118,6 +124,6 @@ bool winner ( CardCreature is_winner, CardCreature contender )
 
 void main ( )
 {
-    auto solver = new Solver!(CardCreature, IterateUntil, hasPerfect, CardCreature)(new CardConfig(), &winner);
+    auto solver = new CardSolver(new CardConfig(), &winner);
     solver.run();
 }

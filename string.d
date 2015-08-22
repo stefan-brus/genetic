@@ -102,6 +102,12 @@ template mutate ( )
 alias StringCreature = Creature!(Gene, GenomeLength, fitness, mutate);
 
 /**
+ * The solver type alias
+ */
+
+alias StringSolver = Solver!(StringCreature, IterateUntil, hasPerfect, StringCreature);
+
+/**
  * Winner function
  */
 
@@ -112,6 +118,6 @@ bool winner ( StringCreature is_winner, StringCreature contender )
 
 void main ( )
 {
-    auto solver = new Solver!(StringCreature, IterateUntil, hasPerfect, StringCreature)(new StringConfig(), &winner);
+    auto solver = new StringSolver(new StringConfig(), &winner);
     solver.run();
 }
