@@ -21,9 +21,9 @@ class CardConfig : SolverConfig
      * Constants
      */
 
-    static const POPULATION_SIZE = 30,
-                 RECOMBINATION_RATE = 0.5,
-                 MUTATION_RATE = 0.1;
+    enum POPULATION_SIZE = 30,
+         RECOMBINATION_RATE = 0.5,
+         MUTATION_RATE = 0.1;
 
     /**
      * Constructor
@@ -43,7 +43,7 @@ class CardConfig : SolverConfig
 
 alias Gene = bool;
 
-const GenomeLength = 10;
+enum GenomeLength = 10;
 
 /**
  * The fitness function.
@@ -58,8 +58,8 @@ template fitness ( )
     {
         import std.math;
 
-        const SUM_TARGET = 36,
-              PROD_TARGET = 360;
+        enum SUM_TARGET = 36,
+             PROD_TARGET = 360;
 
         auto sum = 0,
              prod = 1;

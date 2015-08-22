@@ -23,9 +23,9 @@ class FenceConfig : SolverConfig
      * Constants
      */
 
-    static const POPULATION_SIZE = 10,
-                 RECOMBINATION_RATE = 0.5,
-                 MUTATION_RATE = 0.2;
+    enum POPULATION_SIZE = 10,
+         RECOMBINATION_RATE = 0.5,
+         MUTATION_RATE = 0.2;
 
     /**
      * Constructor
@@ -45,7 +45,7 @@ class FenceConfig : SolverConfig
 
 alias Gene = uint;
 
-const GenomeLength = 2;
+enum GenomeLength = 2;
 
 /**
  * The fitness function.
@@ -58,7 +58,7 @@ template fitness ( )
 {
     double fitness ( )
     {
-        const MAX_FENCE_LENGTH = 2400;
+        enum MAX_FENCE_LENGTH = 2400;
 
         if ( this[0] + (this[1] * 2) > MAX_FENCE_LENGTH )
         {
@@ -86,9 +86,9 @@ template mutate ( )
     {
         import std.random;
 
-        const MAX_FENCE_LENGTH = 2400,
-              X_IDX = 0,
-              Y_IDX = 1;
+        enum MAX_FENCE_LENGTH = 2400,
+             X_IDX = 0,
+             Y_IDX = 1;
 
         if ( idx == X_IDX )
         {

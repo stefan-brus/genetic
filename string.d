@@ -13,7 +13,7 @@ import genetic.Solver;
  * The string we are attempting to generate
  */
 
-const TARGET = "Why, hello there! You did it, computer!";
+enum TARGET = "Why, hello there! You did it, computer!";
 
 /**
  * The solver configuration
@@ -25,9 +25,9 @@ class StringConfig : SolverConfig
      * Constants
      */
 
-    static const POPULATION_SIZE = 10,
-                 RECOMBINATION_RATE = 0.8,
-                 MUTATION_RATE = 0.05;
+    enum POPULATION_SIZE = 10,
+         RECOMBINATION_RATE = 0.8,
+         MUTATION_RATE = 0.05;
 
     /**
      * Constructor
@@ -47,7 +47,7 @@ class StringConfig : SolverConfig
 
 alias Gene = char;
 
-const GenomeLength = TARGET.length;
+enum GenomeLength = TARGET.length;
 
 /**
  * The fitness function.
@@ -63,7 +63,7 @@ template fitness ( )
         import std.math;
 
         // TODO: Figure out how to get rid of this duplication
-        const TARGET = "Why, hello there! You did it, computer!";
+        enum TARGET = "Why, hello there! You did it, computer!";
 
         double error_sum = 0;
 
